@@ -1,0 +1,287 @@
+/* ========================================
+   橋本一利 プロフィールLP
+   フェーズ1：ワイヤーフレーム（低忠実度）
+   目的：構成・順番・情報量の確認。色/写真/装飾は排除
+   ======================================== */
+
+:root {
+  --wf-line: #b8b8b8;
+  --wf-line-strong: #888;
+  --wf-fill: #ededed;
+  --wf-fill-2: #f6f6f6;
+  --wf-text: #333;
+  --wf-muted: #777;
+  --wf-label: #999;
+  --wf-gap: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.8;
+  color: var(--wf-text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+/* --- layout utility --- */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container--narrow { max-width: 720px; }
+
+/* --- placeholder boxes --- */
+.placeholder {
+  background: repeating-linear-gradient(
+    -45deg, var(--wf-fill), var(--wf-fill) 10px,
+    var(--wf-fill-2) 10px, var(--wf-fill-2) 20px);
+  border: 1px dashed var(--wf-line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wf-label);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 8px;
+}
+
+/* --- generic section --- */
+.section { padding: 56px 0; border-top: 1px dashed var(--wf-line); }
+
+.section__eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--wf-muted);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.section__title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.section__lead {
+  text-align: center;
+  color: var(--wf-muted);
+  font-size: 0.95rem;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+/* --- buttons (outlined only) --- */
+.btn {
+  display: inline-block;
+  border: 1px solid var(--wf-line-strong);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  background: #fff;
+}
+.btn--large { padding: 16px 28px; width: 100%; }
+
+/* --- header --- */
+.header {
+  border-bottom: 1px dashed var(--wf-line);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.header__logo { font-family: "Noto Serif JP", serif; font-weight: 600; }
+.header__logo span { font-size: 0.75rem; color: var(--wf-muted); }
+.header__cta { padding: 8px 16px; font-size: 0.8rem; }
+
+/* --- hero --- */
+.hero__media { height: 340px; }
+.hero__inner { padding-top: 32px; padding-bottom: 8px; }
+.hero__title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+.hero__lead { color: var(--wf-muted); margin-bottom: 24px; }
+
+/* --- concept --- */
+.concept__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wf-gap);
+  text-align: center;
+}
+.concept__circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+.concept__label { font-weight: 700; font-size: 1.1rem; }
+.concept__name { font-size: 0.85rem; color: var(--wf-muted); }
+.concept__desc { font-size: 0.85rem; color: var(--wf-muted); margin-top: 8px; }
+
+/* --- profile --- */
+.profile__inner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.profile__photo { height: 300px; }
+.profile__role { font-size: 0.85rem; color: var(--wf-muted); }
+.profile__name {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.profile__catch { margin-bottom: 16px; }
+.profile__facts li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  color: var(--wf-muted);
+}
+.profile__facts li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+}
+
+/* --- message / vision / closing text blocks --- */
+.message__body p,
+.vision__body p,
+.closing__body p { margin-bottom: 20px; }
+
+/* --- services grid --- */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wf-gap);
+}
+.service-card {
+  border: 1px solid var(--wf-line);
+  padding: 24px;
+  border-radius: 4px;
+}
+.service-card__title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--wf-line);
+}
+.service-card__note { font-size: 0.85rem; color: var(--wf-muted); margin-bottom: 10px; }
+.service-card__list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.9rem;
+  color: var(--wf-text);
+}
+.service-card__list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  color: var(--wf-muted);
+}
+
+/* --- promise --- */
+.promise__list {
+  max-width: 620px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+}
+.promise__item {
+  border: 1px solid var(--wf-line);
+  border-radius: 4px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.promise__check { color: var(--wf-line-strong); font-weight: 700; }
+
+/* --- closing tags --- */
+.closing__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 20px 0;
+}
+.closing__tags li {
+  border: 1px solid var(--wf-line);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.85rem;
+  color: var(--wf-muted);
+}
+.closing__body { text-align: center; }
+
+/* --- LINE CTA --- */
+.line-cta { text-align: center; }
+.line-cta__btn { max-width: 480px; margin: 0 auto 40px; }
+.line-cta__gifts-heading { font-size: 0.9rem; color: var(--wf-muted); margin-bottom: 20px; }
+.gift__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--wf-gap);
+}
+.gift__icon {
+  width: 64px;
+  height: 80px;
+  margin: 0 auto 10px;
+}
+.gift__label { font-size: 0.8rem; }
+
+/* --- footer --- */
+.footer {
+  border-top: 1px dashed var(--wf-line);
+  padding: 40px 0;
+  text-align: center;
+}
+.footer__name { font-family: "Noto Serif JP", serif; margin-bottom: 12px; }
+.footer__name span { display: block; font-size: 0.8rem; color: var(--wf-muted); }
+.footer__sns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.footer__sns a { text-decoration: underline; color: var(--wf-muted); font-size: 0.85rem; }
+.footer__copy { font-size: 0.75rem; color: var(--wf-label); }
+
+/* ========== responsive ========== */
+@media (max-width: 820px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .profile__inner { grid-template-columns: 1fr; }
+  .profile__photo { height: 240px; }
+}
+
+@media (max-width: 560px) {
+  .concept__list { grid-template-columns: 1fr; }
+  .services__grid { grid-template-columns: 1fr; }
+  .gift__list { grid-template-columns: repeat(2, 1fr); }
+  .hero__title { font-size: 1.6rem; }
+  .hero__media { height: 240px; }
+}
