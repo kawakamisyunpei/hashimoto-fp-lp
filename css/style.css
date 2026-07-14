@@ -455,9 +455,9 @@ strong { font-weight: 600; color: var(--text); }
 .concept__circle img { width: 100%; height: 100%; object-fit: cover; }
 .concept__item:hover .concept__circle-wrap { transform: translateY(-6px); }
 /* 色ごとの円（画像の下地）＋うっすらリング */
-.concept__item--use    .concept__circle { background: var(--use);     box-shadow: 0 0 0 6px #F8F5EF, 0 0 0 7px rgba(110, 150, 196, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
-.concept__item--grow   .concept__circle { background: var(--grow);    box-shadow: 0 0 0 6px #F8F5EF, 0 0 0 7px rgba(111, 163, 130, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
-.concept__item--protect .concept__circle { background: var(--protect); box-shadow: 0 0 0 6px #F8F5EF, 0 0 0 7px rgba(196, 164, 92, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
+.concept__item--use    .concept__circle { background: var(--use);     box-shadow: 0 0 0 6px #EBE7E4, 0 0 0 7px rgba(110, 150, 196, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
+.concept__item--grow   .concept__circle { background: var(--grow);    box-shadow: 0 0 0 6px #EBE7E4, 0 0 0 7px rgba(111, 163, 130, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
+.concept__item--protect .concept__circle { background: var(--protect); box-shadow: 0 0 0 6px #EBE7E4, 0 0 0 7px rgba(196, 164, 92, 0.35), 0 16px 34px rgba(60, 50, 30, 0.12); }
 .concept__item--use    .concept__num,
 .concept__item--use    .concept__label { color: var(--use); }
 .concept__item--grow   .concept__num,
@@ -1016,48 +1016,30 @@ strong { font-weight: 600; color: var(--text); }
    ========================================================= */
 
 /* --- ベースの背景（淡いベージュ＋やわらかな光） --- */
+/* 背景は urbaniz.co.jp に合わせてフラットな単色 #EBE7E4 */
 body {
-  background-color: #F8F5EF;
-  background-image:
-    radial-gradient(1100px 620px at 12% -6%, rgba(255, 255, 255, 0.85), transparent 60%),
-    radial-gradient(900px 520px at 108% 8%, rgba(198, 216, 196, 0.18), transparent 62%),
-    radial-gradient(1000px 700px at 50% 118%, rgba(205, 190, 150, 0.12), transparent 60%);
-  background-attachment: fixed;
+  background: #EBE7E4;
 }
 
 /* --- セクション背景の変化：白→ベージュ→白→薄グレー --- */
-.message {
-  background-color: #F6F3EC;
-  background-image: url("../images/message-bg.png");
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.concept  { background: transparent; }
+/* セクションごとの色分け（ベース#EBE7E4に対し 明るいオフホワイト↔やや深いグレージュで交互に） */
+.message  { background: #F7F4F0; }
+.concept  { background: transparent; }        /* ベースのグレージュ #EBE7E4 */
 .services {
-  background: rgba(255, 255, 255, 0.5);
+  background: #F7F4F0;
   padding-top: clamp(48px, 6.5vw, 82px);
   padding-bottom: clamp(40px, 5.5vw, 68px);
 }
 .services .section__lead { margin-bottom: clamp(28px, 4vw, 44px); }
 .services .tabs { margin-bottom: clamp(20px, 2.8vw, 32px); }
-.steps    { background: rgba(232, 227, 217, 0.55); }
+.steps    { background: #E5E0DA; }
 
 /* --- 各セクションの巨大ぼかし円（左上/右下）＋ゆっくり移動 --- */
 .message::before,
 .concept::before,
 .services::before,
 .steps::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  width: clamp(300px, 42vw, 560px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  pointer-events: none;
-  animation: lux-drift 22s ease-in-out infinite alternate;
+  display: none;
 }
 .message::before  { top: -90px;  left: -70px;  opacity: 0.2; background: radial-gradient(circle, rgba(150, 182, 150, 0.55), transparent 70%); }
 .concept::before  { bottom: -110px; right: -70px; background: radial-gradient(circle, rgba(201, 173, 108, 0.5), transparent 70%); animation-duration: 26s; }
@@ -1140,7 +1122,3 @@ body {
   .steps::before { animation: none !important; }
 }
 
-@media (max-width: 760px) {
-  body { background-attachment: scroll; }
-  .message::after { display: none; }
-}
